@@ -1,0 +1,58 @@
+<section class="section">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bordered">
+          <div class="header-block">
+            <h3 class="title">List of tasks</h3>
+          </div>
+          <div class="form-inline pull-right m-r-2">
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary"
+                 routerLink="/admin/add-task">
+                <strong>+</strong>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-block">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+            *ngFor="let task of tasks"
+            >
+              <th scope="row">{{task.id}}</th>
+              <td>{{task.name}}</td>
+              <td>{{task.description}}</td>
+              <td class="text-lg-center">
+                <button type="button" class="btn btn-secondary"
+                   routerLink="/admin/update-task/{{task.id}}">
+                  <strong>Update</strong>
+
+                </button>
+                <button type="button" class="btn btn-secondary" (click)="deleteTask(task.id)">
+                  <strong>Delete</strong>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

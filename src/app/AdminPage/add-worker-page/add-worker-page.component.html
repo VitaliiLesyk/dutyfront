@@ -1,0 +1,54 @@
+<section class="section">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bordered">
+          <div class="header-block">
+            <h3 class="title">Add worker</h3>
+          </div>
+        </div>
+        <div class="card-block">
+          <form>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="text"
+                class="form-control underlined"
+                id="email"
+                placeholder="Enter your email"
+                [(ngModel)] = "worker.email"
+                [ngModelOptions]="{standalone: true}"
+              >
+            </div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control underlined"
+                id="name"
+                placeholder="Enter your name"
+                [(ngModel)] = "worker.name"
+                [ngModelOptions]="{standalone: true}"
+              >
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control underlined"
+                id="password"
+                placeholder="Password"
+                [(ngModel)] = "worker.password"
+                [ngModelOptions]="{standalone: true}"
+              >
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="addWorker()">submit</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
