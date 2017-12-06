@@ -1,0 +1,58 @@
+<section class="section">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bordered">
+          <div class="header-block">
+            <h3 class="title">Update worker</h3>
+          </div>
+        </div>
+        <div class="card-block">
+          <form
+
+            *ngIf="worker" >
+
+            <div class="form-group">
+              <label for="up-email">Email</label>
+              <input
+                type="text"
+                class="form-control underlined"
+                id="up-email"
+                placeholder="worker"
+                [(ngModel)] = "worker.email"
+                [ngModelOptions]="{standalone: true}"
+
+              >
+
+            </div>
+            <div class="form-group">
+              <label for="up-name">Name</label>
+              <input
+                type="text"
+                class="form-control underlined"
+                id="up-name"
+                placeholder="Enter your name"
+                [(ngModel)] = "worker.name"
+                [ngModelOptions]="{standalone: true}"
+              >
+            </div>
+            <div class="form-group">
+              <label for="up-password">Password</label>
+              <input
+                type="password"
+                class="form-control underlined"
+                id="up-password"
+                placeholder="Password"
+                [(ngModel)] = "worker.password"
+                [ngModelOptions]="{standalone: true}"
+              >
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="(updateWorker(worker))">submit</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

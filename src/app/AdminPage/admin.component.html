@@ -1,0 +1,52 @@
+<div class="main-wrapper">
+  <div class="app">
+    <!--HEADER-->
+    <header class="header">
+
+      <div class="header-block header-block-nav">
+        <ul class="nav-profile">
+          <li class="profile dropdown">
+            <span class="name">
+                Hello , Admin
+            </span>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!--HEADER-->
+    <!--SIDEBAR-->
+    <aside class="sidebar">
+      <div class="sidebar-container">
+        <div class="sidebar-header">
+          <div class="brand">
+            <div class="logo">
+              <span class="l l1"></span>
+              <span class="l l2"></span>
+              <span class="l l3"></span>
+              <span class="l l4"></span>
+              <span class="l l5"></span>
+            </div>
+            Connected Digital
+          </div>
+        </div>
+        <nav class="menu">
+          <ul class="nav metismenu">
+            <li routerLinkActive="active">
+              <a routerLink="/admin/workers-list/"> <i class="fa fa-building-o"></i>Workers</a>
+            </li>
+            <li  routerLinkActive="active">
+              <a  routerLink="/admin/tasks-list/"> <i class="fa fa-flash"></i>Tasks</a>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    <!--SIDEBAR-->
+    <!--CONTENT-->
+    <article class="content">
+      <router-outlet></router-outlet>
+    </article>
+    <!--CONTENT-->
+  </div>
+</div>
