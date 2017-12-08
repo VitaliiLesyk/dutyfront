@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
-import {WorkersService} from './service/workers.service';
+import {WorkerService} from './service/worker.service';
 import {AdminModule} from './AdminPage/admin.module';
 import {HttpClientModule} from '@angular/common/http';
-import {TasksService} from './service/tasks.service';
+import {TaskService} from './service/task.service';
+import {DutyService} from './service/duty.service';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -22,9 +24,10 @@ import {TasksService} from './service/tasks.service';
     AuthModule,
     AppRoutingModule,
     AdminModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [WorkersService, TasksService],
+  providers: [WorkerService, TaskService, DutyService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

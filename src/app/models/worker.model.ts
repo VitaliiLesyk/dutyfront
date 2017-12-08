@@ -2,7 +2,7 @@ export class  Worker {
   email: string;
   password: string;
   name: string;
-  id: number;
+  id?: number;
 }
 export interface  IWorker {
   email: string;

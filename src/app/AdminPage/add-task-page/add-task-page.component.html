@@ -8,21 +8,34 @@
           </div>
         </div>
         <div class="card-block">
-          <form>
+          <div class="alert alert-{{message.getType()}}"
+               *ngIf="message.getText()"
+          >{{message.getText()}}</div>
+          <form [formGroup]="form">
             <div *ngIf="task">
-            <div class="form-group">
+            <div
+              class="form-group"
+              [ngClass]=" {'has-error':form.get('name').invalid && form.get('name').touched}"
+            >
               <label for="name">Name</label>
               <input
                 type="text"
                 class="form-control underlined"
                 id="name"
                 placeholder="Enter your name"
+                formControlName="name"
                 [(ngModel)] = "task.name"
-                [ngModelOptions]="{standalone: true}"
               >
+              <span
+                class="form-help-text"
+                *ngIf="form.get('name').invalid && form.get('name').touched"
+              >
+               <span *ngIf="form.get('name')['errors']['required']">Name should be present  <br> </span>
+               <span *ngIf="form.get('name')['errors']['maxlength']">Name should has max length 20</span>
+             </span>
             </div>
             <div class="form-group">
-              <label for="description">description</label>
+              <label for="description">Description</label>
               <input
                 type="text"
                 class="form-control underlined"
@@ -32,7 +45,11 @@
                 [ngModelOptions]="{standalone: true}"
               >
             </div>
-            <button type="submit" class="btn btn-primary" (click)="addTask()">Submit</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="form.invalid"
+              (click)="addTask()">Submit</button>
             </div>
           </form>
         </div>

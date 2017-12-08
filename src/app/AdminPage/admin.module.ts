@@ -1,5 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
+
+
 import {SharedModule} from '../shared/shared.module';
 import {AdminRoutingModule} from './admin-routing.module';
 import { WorkerListPageComponent } from './worker-list-page/worker-list-page.component';
@@ -7,8 +10,13 @@ import { TasksListPageComponent } from './tasks-list-page/tasks-list-page.compon
 import { AddWorkerPageComponent } from './add-worker-page/add-worker-page.component';
 import { AddTaskPageComponent } from './add-task-page/add-task-page.component';
 import { AdminComponent } from './admin.component';
-import {UpdateWorkerPageComponen} from './update-worker-page/update-worker-page.component';
+import {UpdateWorkerPageComponent} from './update-worker-page/update-worker-page.component';
 import {UpdateTaskPageComponent} from './update-task-page/update-task-page.component';
+import { DutyPageComponent } from './duty-page/duty-page.component';
+import {FormsModule} from '@angular/forms';
+
+
+
 
 
 
@@ -16,17 +24,20 @@ import {UpdateTaskPageComponent} from './update-task-page/update-task-page.compo
   imports : [
     CommonModule,
     SharedModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ],
   declarations: [
     WorkerListPageComponent,
     TasksListPageComponent,
     AddWorkerPageComponent,
     AddTaskPageComponent,
-    UpdateWorkerPageComponen,
+    UpdateWorkerPageComponent,
     UpdateTaskPageComponent,
-    AdminComponent
-  ]
+    AdminComponent,
+    DutyPageComponent,
+
+  ],
 })
 
 export class AdminModule {}

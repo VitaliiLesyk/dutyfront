@@ -4,27 +4,20 @@ import {Observable} from 'rxjs/Observable';
 import {IWorker, Worker} from '../models/worker.model';
 import {HttpClient} from '@angular/common/http';
 
-
-
-
-
 const APP_URL = 'http://localhost:8456';
+
 @Injectable()
-
-export class  WorkersService {
-private addWorkerUrl: string = APP_URL + '/workers/add';
-private getWorkersUrl: string = APP_URL + '/workers/get';
-private getOneWorkersUrl: string = APP_URL + '/workers/get/';
-private deleteWorkersUrl: string = APP_URL + '/workers/delete';
-private updateWorkersUrl: string = APP_URL + '/workers/update/';
-
-
+export class WorkerService {
+private addWorkerUrl: string = APP_URL + '/worker/add';
+private getWorkersUrl: string = APP_URL + '/worker/get';
+private getOneWorkersUrl: string = APP_URL + '/worker/get/';
+private deleteWorkersUrl: string = APP_URL + '/worker/delete';
+private updateWorkersUrl: string = APP_URL + '/worker/update/';
 
   constructor (private http: HttpClient)  {}
 
-  addWorker(worker: Worker): Observable<Worker> {
-
-    return this.http.post<Worker>(this.addWorkerUrl, worker);
+    addWorker(worker: Worker): Observable<Worker | Error> {
+    return this.http.post<Worker | Error>(this.addWorkerUrl, worker);
     }
 
    getWorkers(): Observable<Worker[]> {
@@ -38,6 +31,6 @@ private updateWorkersUrl: string = APP_URL + '/workers/update/';
     }
     updateWorker(worker: Worker ): Observable<Worker> {
     return this.http.put<Worker>( this.updateWorkersUrl , worker);
-  }
    }
+}
 

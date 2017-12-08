@@ -26,7 +26,7 @@
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>Id</th>
+              <th>№</th>
               <th>Name</th>
               <th>Description</th>
             </tr>
@@ -35,17 +35,17 @@
             <tr
             *ngFor="let task of tasks"
             >
-              <th scope="row">{{task.id}}</th>
+              <th scope="row">{{tasks.lastIndexOf(task)+1}}</th>
               <td>{{task.name}}</td>
               <td>{{task.description}}</td>
               <td class="text-lg-center">
                 <button type="button" class="btn btn-secondary"
                    routerLink="/admin/update-task/{{task.id}}">
-                  <strong>Update</strong>
+                  <strong>&#9998;</strong>
 
                 </button>
                 <button type="button" class="btn btn-secondary" (click)="deleteTask(task.id)">
-                  <strong>Delete</strong>
+                  <strong>&#9988;</strong>
                 </button>
               </td>
             </tr>

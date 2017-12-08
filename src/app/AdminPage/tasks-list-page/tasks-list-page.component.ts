@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from '../../models/task.model';
-import {TasksService} from '../../service/tasks.service';
+import {TaskService} from '../../service/task.service';
 
 @Component({
   selector: 'app-tasks-list-page',
@@ -11,7 +11,7 @@ export class TasksListPageComponent implements OnInit {
 
   tasks: Task[];
   constructor(
-   private taskService: TasksService) { }
+   private taskService: TaskService) { }
 
   ngOnInit() {
     this.getTaskList();
@@ -23,6 +23,9 @@ export class TasksListPageComponent implements OnInit {
   }
   deleteTask(id: number): void {
     this.taskService.deleteTasks(id)
-      .subscribe();
+      .subscribe(() => {
+          this.getTaskList();
+        }
+      );
   }
 }

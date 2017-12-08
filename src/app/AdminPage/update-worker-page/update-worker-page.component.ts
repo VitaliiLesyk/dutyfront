@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import { WorkersService } from '../../service/workers.service';
+import { WorkerService } from '../../service/worker.service';
 import { Worker} from '../../models/worker.model';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+import {Message} from '../../models/message.model';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -9,18 +11,26 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './update-worker-page.component.html',
   styleUrls: ['./update-worker-page.component.css']
 })
-export class UpdateWorkerPageComponen implements OnInit {
+export class UpdateWorkerPageComponent implements OnInit {
+  private workerService: WorkerService;
+  private route: ActivatedRoute;
+  private worker: Worker;
+  private message: Message;
+  form: FormGroup;
+  constructor (workerService: WorkerService,
+               route: ActivatedRoute) {
+    this.workerService = workerService;
+    this.route = route;
+    this.worker = new Worker();
+    this.message = new Message('', '');
+  }
 
-
-  worker: Worker;
-
-  constructor (
-    private workerService: WorkersService,
-    private route: ActivatedRoute,
-    private router: Router
-                ) {}
-
-  ngOnInit() {
+ public ngOnInit() {
+    this.form = new FormGroup({
+     'email' : new FormControl(null, [Validators.required, Validators.email]),
+     'password' : new FormControl(null, [Validators.required , Validators.minLength(8)]),
+     'name' : new FormControl(null, [Validators.required , Validators.maxLength(20)])
+   });
     const id: number = +this.route.snapshot.paramMap.get('id');
     this.workerService.getOneWorker(id)
       .subscribe(worker => {
@@ -28,15 +38,17 @@ export class UpdateWorkerPageComponen implements OnInit {
         console.log(this.worker);
       }, error => console.log(error), () => {
       });
-  }
-  updateWorker(worker: Worker): void {
+    }
+
+    public updateWorker(): void {
     this.workerService.updateWorker(this.worker)
-      .subscribe(() => {
-          console.log(this.worker);
-          this.router.navigate(['/admin/workers-list/']);
-        },
-        error => {
-          console.log(error);
+      .subscribe((worker: Worker | any) => {
+          if (worker.hasOwnProperty('id')) {
+            this.message = new Message('Success', 'success');
+            this.message.show();
+          }else {
+            this.message = new Message(worker.message, 'danger');
+          }
         });
   }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateWorkerPageComponen } from './update-worker-page.component';
+import { UpdateWorkerPageComponent } from './update-worker-page.component';
 
 describe('AddWorkerPageComponent', () => {
-  let component: UpdateWorkerPageComponen;
-  let fixture: ComponentFixture<UpdateWorkerPageComponen>;
+  let component: UpdateWorkerPageComponent;
+  let fixture: ComponentFixture<UpdateWorkerPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateWorkerPageComponen ]
+      declarations: [ UpdateWorkerPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateWorkerPageComponen);
+    fixture = TestBed.createComponent(UpdateWorkerPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

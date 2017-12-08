@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { WorkersService } from '../../service/workers.service';
+import { WorkerService } from '../../service/worker.service';
 import { Worker} from '../../models/worker.model';
+import {DutyService} from '../../service/duty.service';
 import {Router} from '@angular/router';
+
+
 
 
 @Component({
@@ -11,11 +14,15 @@ import {Router} from '@angular/router';
 })
 export class WorkerListPageComponent implements OnInit {
 
-
+  id1: number;
+  id2: number;
   workers: Worker[];
 
-  constructor( private workerService: WorkersService,
-               private router: Router) {}
+  constructor(
+    private workerService: WorkerService,
+    private dutyService: DutyService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getWorkerList();
@@ -28,7 +35,25 @@ export class WorkerListPageComponent implements OnInit {
   }
   deleteWorker(id: number): void {
     this.workerService.deleteWorkers(id)
-      .subscribe(()=>
-        this.getWorkerList();)
+      .subscribe(() =>
+        this.getWorkerList());
+  }
+  public setId(id: number):void {
+    if(this.id1 === null || typeof this.id1 === 'undefined') {
+      this.id1 = id;
+    }
+    else
+      if(this.id2 === null || typeof this.id2 === 'undefined') {
+        this.id2 = id;
+        this.swap();
+      }
+  }
+  public swap() {
+    this.dutyService.swap(this.id1, this.id2)
+      .subscribe(() => {
+        this.id1 = null;
+        this.id2 = null;
+        this.getWorkerList();
+        }, error => console.log(error));
   }
 }

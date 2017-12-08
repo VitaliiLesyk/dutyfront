@@ -7,9 +7,7 @@
             <h3 class="title">List of workers</h3>
           </div>
           <div class="form-inline pull-right m-r-2">
-            <div class="form-group">
-              <input type="email" class="form-control" placeholder="Search...">
-            </div>
+
             <div class="btn-group">
               <button type="button" class="btn btn-secondary"
                  routerLink="/admin/add-worker">
@@ -29,7 +27,7 @@
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>Id</th>
+              <th>№</th>
               <th>Name</th>
               <th>Email</th>
               <th>Password</th>
@@ -39,7 +37,7 @@
             <tr
               *ngFor="let worker of workers"
             >
-              <th scope="row">{{worker.id}}</th>
+              <th scope="row">{{workers.lastIndexOf(worker)+1}}</th>
               <td>{{worker.name}}</td>
               <td>{{worker.email}}</td>
               <td>{{worker.password}}</td>
@@ -47,14 +45,22 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
+                  routerLink= "/admin/update-worker/{{worker.id}}"
                 >
-                  <a routerLink= "/admin/update-worker/{{worker.id}}">
-                    <strong>Update</strong>
-                  </a>
-
+                  <strong>&#9998;</strong>
                 </button>
                 <button type="button" class="btn btn-secondary" (click)= "deleteWorker(worker.id)">
-                  <strong>Delete</strong>
+                  <strong>&#9988;</strong>
+                </button>
+
+                <button type="button" class="btn btn-secondary"
+                routerLink="/admin/duty/{{worker.id}}"
+                >
+                  <strong>&#10710;</strong>
+                </button>
+                <button type="button" class="btn btn-secondary"
+                (click)="setId(worker.id)">
+                  <strong>&#8693;</strong>
                 </button>
               </td>
             </tr>

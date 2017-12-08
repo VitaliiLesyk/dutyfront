@@ -6,8 +6,11 @@ import {AddTaskPageComponent} from './add-task-page/add-task-page.component';
 import {AddWorkerPageComponent} from './add-worker-page/add-worker-page.component';
 import {TasksListPageComponent} from './tasks-list-page/tasks-list-page.component';
 import {WorkerListPageComponent} from './worker-list-page/worker-list-page.component';
-import {UpdateWorkerPageComponen} from './update-worker-page/update-worker-page.component';
+import {UpdateWorkerPageComponent} from './update-worker-page/update-worker-page.component';
 import {UpdateTaskPageComponent} from './update-task-page/update-task-page.component';
+import {DutyPageComponent} from './duty-page/duty-page.component';
+
+
 
 const routes: Routes = [
   {path: 'admin', component: AdminComponent, children: [
@@ -15,9 +18,10 @@ const routes: Routes = [
       {path: 'add-worker', component: AddWorkerPageComponent},
       {path: 'tasks-list', component: TasksListPageComponent},
       {path: 'workers-list', component: WorkerListPageComponent},
-      {path: 'update-worker/:id', component: UpdateWorkerPageComponen },
-      {path: 'update-task/:id', component: UpdateTaskPageComponent }
-      ]}
+      {path: 'update-worker/:id', component: UpdateWorkerPageComponent },
+      {path: 'update-task/:id', component: UpdateTaskPageComponent},
+      {path: 'duty/:id', component: DutyPageComponent},
+    ]}
 ];
 
 @NgModule({
