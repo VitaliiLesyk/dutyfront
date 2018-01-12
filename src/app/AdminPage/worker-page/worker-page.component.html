@@ -1,0 +1,45 @@
+<section class="section">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-block">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+
+              <th>Name</th>
+              <th>Email</th>
+              <th>Password</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{worker.name}}</td>
+              <td>{{worker.email}}</td>
+              <td>{{worker.password}}</td>
+              <td class="text-lg-center">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  routerLink= "/admin/update-worker/{{worker.id}}"
+                >
+                  <strong>&#9998;</strong>
+                </button>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+

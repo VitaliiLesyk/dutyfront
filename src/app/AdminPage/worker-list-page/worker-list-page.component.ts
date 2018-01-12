@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { WorkerService } from '../../service/worker.service';
 import { Worker} from '../../models/worker.model';
 import {DutyService} from '../../service/duty.service';
-import {Router} from '@angular/router';
-
-
-
+import {ActivatedRoute, Router} from '@angular/router';
+import {Observable} from "rxjs/Observable";
+import {Duty} from "../../models/duty.model";
 
 @Component({
   selector: 'app-worker-list-page',
@@ -13,25 +12,32 @@ import {Router} from '@angular/router';
   styleUrls: ['./worker-list-page.component.css']
 })
 export class WorkerListPageComponent implements OnInit {
-
   id1: number;
   id2: number;
   workers: Worker[];
+  public duty :Duty;
+  id: number;
 
   constructor(
     private workerService: WorkerService,
     private dutyService: DutyService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private route:ActivatedRoute,
+  ) {
+    this.duty = new Duty();
+  }
 
   ngOnInit() {
     this.getWorkerList();
-  }
 
-  getWorkerList(): void {
-   this.workerService.getWorkers()
-     .subscribe(workers => this.workers = (workers as (Worker[])), error => console.log(error), () => {}
-     );
+  }
+  getWorkerList(){
+   return this.workerService.getAllOrderedByDutyWithStatusReady()
+     .subscribe(workers => this.workers = (workers as (Worker[])), error => console.log(error));
+  }
+  getReadyByWorkerId(workerId:number){
+      return this.dutyService.getReadyByWorkerId(workerId)
+        .subscribe(result => console.log(result));
   }
   deleteWorker(id: number): void {
     this.workerService.deleteWorkers(id)

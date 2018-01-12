@@ -9,7 +9,7 @@ const APP_URL = 'http://localhost:8456';
 @Injectable()
 export class WorkerService {
 private addWorkerUrl: string = APP_URL + '/worker/add';
-private getWorkersUrl: string = APP_URL + '/worker/get';
+private getWorkersUrl: string = APP_URL + '/worker/getReady';
 private getOneWorkersUrl: string = APP_URL + '/worker/get/';
 private deleteWorkersUrl: string = APP_URL + '/worker/delete';
 private updateWorkersUrl: string = APP_URL + '/worker/update/';
@@ -20,7 +20,7 @@ private updateWorkersUrl: string = APP_URL + '/worker/update/';
     return this.http.post<Worker | Error>(this.addWorkerUrl, worker);
     }
 
-   getWorkers(): Observable<Worker[]> {
+  getAllOrderedByDutyWithStatusReady(): Observable<Worker[]> {
       return this.http.get<Worker[]>(this.getWorkersUrl);
     }
     getOneWorker(id: number): Observable<Worker> {

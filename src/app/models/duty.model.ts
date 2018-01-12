@@ -1,4 +1,4 @@
 export class Duty {
- dateStart: Date;
- dateOver: Date;
+ startDate: Date;
+ overDate: Date;
 }

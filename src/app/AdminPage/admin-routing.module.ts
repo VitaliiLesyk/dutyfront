@@ -8,7 +8,9 @@ import {TasksListPageComponent} from './tasks-list-page/tasks-list-page.componen
 import {WorkerListPageComponent} from './worker-list-page/worker-list-page.component';
 import {UpdateWorkerPageComponent} from './update-worker-page/update-worker-page.component';
 import {UpdateTaskPageComponent} from './update-task-page/update-task-page.component';
-import {DutyPageComponent} from './duty-page/duty-page.component';
+import {WorkerPageComponent} from "./worker-page/worker-page.component";
+import {DutyPageComponent} from "./duty-page/duty-page.component";
+
 
 
 
@@ -20,7 +22,9 @@ const routes: Routes = [
       {path: 'workers-list', component: WorkerListPageComponent},
       {path: 'update-worker/:id', component: UpdateWorkerPageComponent },
       {path: 'update-task/:id', component: UpdateTaskPageComponent},
+      {path: 'worker/:id', component: WorkerPageComponent},
       {path: 'duty/:id', component: DutyPageComponent},
+
     ]}
 ];
 
