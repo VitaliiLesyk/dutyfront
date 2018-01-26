@@ -7,7 +7,6 @@ import {HttpClient} from '@angular/common/http';
 const APP_URL = 'http://localhost:8456';
 
 @Injectable()
-
 export class DutyService {
   private getByWorkerUrl: string = APP_URL + '/duty/getReadyByWorkerId/';
   private swapWorkersUrl: string = APP_URL + '/duty/swap/';

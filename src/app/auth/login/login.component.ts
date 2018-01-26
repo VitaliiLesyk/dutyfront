@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from "../../service/auth.service";
+import {UserModel} from "../../models/user.model";
+import {AuthModel} from "../../models/auth.model";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,14 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private form: FormGroup;
+  private authService: AuthService;
+  private userModel: UserModel;
 
-  form: FormGroup;
-  constructor() { }
+  constructor(authService: AuthService) {
+    this.authService = authService;
+    this.userModel = new UserModel();
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -18,6 +26,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this.authService.authentication(this.userModel).subscribe((authModel: AuthModel | any) => {
+      if (authModel.hasOwnProperty('token')) {
+        localStorage.setItem('x-access-token', authModel.token);
+      }
+    });
+  }
 
 }
