@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
+
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { AuthModule } from './auth/auth.module';
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaskService } from './service/task.service';
 import { DutyService } from './service/duty.service';
 import { FormsModule } from '@angular/forms';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AdminModule,
     HttpClientModule,
+    NgbModule.forRoot(),
     FormsModule,
   ],
   providers: [WorkerService, TaskService, DutyService ],

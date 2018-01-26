@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AddTaskPageComponent } from './add-task-page.component';
+import {AddTaskPageComponent} from './add-task-page.component';
 
 describe('AddTaskPageComponent', () => {
   let component: AddTaskPageComponent;
@@ -8,9 +8,9 @@ describe('AddTaskPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddTaskPageComponent ]
+      declarations: [AddTaskPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

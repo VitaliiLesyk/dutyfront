@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Task} from '../../models/task.model';
 import {TaskService} from '../../service/task.service';
 import {Message} from '../../models/message.model';
@@ -14,7 +14,8 @@ export class AddTaskPageComponent implements OnInit {
   private task: Task;
   private message: Message;
   form: FormGroup;
-  constructor( taskService: TaskService) {
+
+  constructor(taskService: TaskService) {
     this.taskService = taskService;
     this.task = new Task();
     this.message = new Message('', '');
@@ -22,7 +23,7 @@ export class AddTaskPageComponent implements OnInit {
 
   public ngOnInit() {
     this.form = new FormGroup({
-      'name' : new FormControl(null, [Validators.required , Validators.maxLength(20)])
+      'name': new FormControl(null, [Validators.required, Validators.maxLength(20)])
     });
   }
 
@@ -32,7 +33,7 @@ export class AddTaskPageComponent implements OnInit {
         if (task.hasOwnProperty('id')) {
           this.message = new Message('Success', 'success');
           this.message.show();
-        }else {
+        } else {
           this.message = new Message(task.message, 'danger');
         }
       });
