@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor(httpClient: HttpClient) {
     this.httpClient = httpClient;
-    this.authenticationUrl = APP_URL + '/authentication';
+    this.authenticationUrl = APP_URL + '/authenticate';
   }
 
   public authentication(user: UserModel): Observable<AuthModel> {

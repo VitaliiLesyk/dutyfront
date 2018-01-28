@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 import { Duty} from '../models/duty.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClientWrapper} from "../auth/wrapper/HttpClientWrapper";
 
 const APP_URL = 'http://localhost:8456';
 
@@ -11,7 +11,7 @@ export class DutyService {
   private getByWorkerUrl: string = APP_URL + '/duty/getReadyByWorkerId/';
   private swapWorkersUrl: string = APP_URL + '/duty/swap/';
 
-  constructor (private http: HttpClient)  {}
+  constructor (private http: HttpClientWrapper)  {}
 
   getReadyByWorkerId(id: number): Observable<Duty> {
     return this.http.get<Duty>(this.getByWorkerUrl + String(id));

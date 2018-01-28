@@ -10,7 +10,7 @@ import {AuthModel} from "../../models/auth.model";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private form: FormGroup;
+  form: FormGroup;
   private authService: AuthService;
   private userModel: UserModel;
 
@@ -26,11 +26,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  public authentication(): void {
     this.authService.authentication(this.userModel).subscribe((authModel: AuthModel | any) => {
-      if (authModel.hasOwnProperty('token')) {
-        localStorage.setItem('x-access-token', authModel.token);
-      }
+           if (authModel.hasOwnProperty('token')) {
+             localStorage.setItem('x-access-token', authModel.token);
+           }
     });
   }
 
