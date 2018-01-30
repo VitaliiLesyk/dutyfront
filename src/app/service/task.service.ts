@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 import {ITask, Task} from '../models/task.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClientWrapper} from "../auth/wrapper/HttpClientWrapper";
 
 
 
@@ -16,7 +16,7 @@ export class TaskService {
   private updateTaskUrl: string = APP_URL + '/task/update/';
   private getOneTaskUrl: string = APP_URL + '/task/get/';
 
-  constructor (private http: HttpClient)  {}
+  constructor (private http: HttpClientWrapper)  {}
 
   addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.addTaskUrl , task);

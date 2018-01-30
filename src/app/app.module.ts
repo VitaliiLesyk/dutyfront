@@ -14,6 +14,8 @@ import { TaskService } from './service/task.service';
 import { DutyService } from './service/duty.service';
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {AuthService} from "./service/auth.service";
+import {HttpClientWrapper} from "./auth/wrapper/HttpClientWrapper";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     NgbModule.forRoot(),
     FormsModule,
   ],
-  providers: [WorkerService, TaskService, DutyService ],
+  providers: [WorkerService, TaskService, DutyService, AuthService, HttpClientWrapper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

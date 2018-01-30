@@ -1,26 +1,28 @@
-
-<form [formGroup]="form"  (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input
-      type="text"
-      class="form-control underlined"
-      id="email"
-      placeholder="Enter your email"
-      formControlName="email"
-    >
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input
-      type="password"
-      class="form-control underlined"
-      id="password"
-      placeholder="Password"
-      formControlName="password"
-    >
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-block btn-primary">Login</button>
-  </div>
+<form
+  [formGroup]="form"
+  *ngIf="userModel"
+>
+    <div class="form-group">
+      <label for="up-username">Username</label>
+      <input
+        type="text"
+        class="form-control underlined"
+        id="up-username"
+        placeholder="Enter your username"
+        formControlName="email"
+        [(ngModel)] = "userModel.username"
+      >
+    </div>
+    <div class="form-group">
+      <label for="up-password">Password</label>
+      <input
+        type="password"
+        class="form-control underlined"
+        id="up-password"
+        placeholder="Password"
+        formControlName="password"
+        [(ngModel)] = "userModel.password"
+      >
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="authentication()">Login</button>
 </form>

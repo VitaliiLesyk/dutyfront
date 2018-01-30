@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 import {IWorker, Worker} from '../models/worker.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClientWrapper} from "../auth/wrapper/HttpClientWrapper";
 
 const APP_URL = 'http://localhost:8456';
 
@@ -14,13 +14,13 @@ private getOneWorkersUrl: string = APP_URL + '/worker/get/';
 private deleteWorkersUrl: string = APP_URL + '/worker/delete';
 private updateWorkersUrl: string = APP_URL + '/worker/update/';
 
-  constructor (private http: HttpClient)  {}
+  constructor (private http: HttpClientWrapper)  {}
 
     addWorker(worker: Worker): Observable<Worker | Error> {
     return this.http.post<Worker | Error>(this.addWorkerUrl, worker);
     }
 
-  getAllOrderedByDutyWithStatusReady(): Observable<Worker[]> {
+    getAllOrderedByDutyWithStatusReady(): Observable<Worker[]> {
       return this.http.get<Worker[]>(this.getWorkersUrl);
     }
     getOneWorker(id: number): Observable<Worker> {
