@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {AuthService} from "./service/auth.service";
 import {HttpClientWrapper} from "./auth/wrapper/HttpClientWrapper";
+import {AdminCanActivateImpl} from "./guards/AdminCanActivateImpl";
+import {UserCanActivateImpl} from "./guards/UserCanActivateImpl";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import {HttpClientWrapper} from "./auth/wrapper/HttpClientWrapper";
     NgbModule.forRoot(),
     FormsModule,
   ],
-  providers: [WorkerService, TaskService, DutyService, AuthService, HttpClientWrapper],
+  providers: [WorkerService, TaskService, DutyService, AuthService, HttpClientWrapper, AdminCanActivateImpl, UserCanActivateImpl],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

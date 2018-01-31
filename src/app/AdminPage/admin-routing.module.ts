@@ -10,12 +10,13 @@ import {UpdateWorkerPageComponent} from './update-worker-page/update-worker-page
 import {UpdateTaskPageComponent} from './update-task-page/update-task-page.component';
 import {WorkerPageComponent} from "./worker-page/worker-page.component";
 import {DutyPageComponent} from "./duty-page/duty-page.component";
+import {AdminCanActivateImpl} from "../guards/AdminCanActivateImpl";
 
 
 
 
 const routes: Routes = [
-  {path: 'admin', component: AdminComponent, children: [
+  {path: 'admin', canActivate: [AdminCanActivateImpl], component: AdminComponent, children: [
       {path: 'add-task', component: AddTaskPageComponent},
       {path: 'add-worker', component: AddWorkerPageComponent},
       {path: 'tasks-list', component: TasksListPageComponent},
@@ -23,8 +24,7 @@ const routes: Routes = [
       {path: 'update-worker/:id', component: UpdateWorkerPageComponent },
       {path: 'update-task/:id', component: UpdateTaskPageComponent},
       {path: 'worker/:id', component: WorkerPageComponent},
-      {path: 'duty/:id', component: DutyPageComponent},
-
+      {path: 'duty/:id', component: DutyPageComponent}
     ]}
 ];
 
