@@ -3,7 +3,8 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {WorkerService} from '../service/worker.service';
 import {Worker} from '../models/worker.model';
-import {current} from 'codelyzer/util/syntaxKind';
+import {Duty} from '../models/duty.model';
+import {DutyService} from '../service/duty.service';
 
 
 @Component({
@@ -27,25 +28,38 @@ import {current} from 'codelyzer/util/syntaxKind';
 
 export class AdminComponent implements OnInit {
   private workerService: WorkerService;
+  private dutyService: DutyService;
   private worker: Worker;
-  public current: string;
+  private duty: Duty;
 
-  constructor(private modalService: NgbModal, workerService: WorkerService) {
+  constructor(private modalService: NgbModal, workerService: WorkerService, dutyService: DutyService) {
     this.workerService = workerService;
+    this.dutyService = dutyService;
+    this.duty = new Duty();
     this.worker = new Worker();
-    this.current = 'NaN';
+    this.worker.email = 'NaN';
   }
 
   ngOnInit() {
     this.getByCurrentDuty();
+
   }
 
   getByCurrentDuty() {
       this.workerService.getByCurrentDuty().subscribe((worker) => {
         if (worker.hasOwnProperty('email')) {
-          this.current = worker.email;
+          this.worker.email = worker.email;
+          this.worker.name = worker.name;
+          this.worker.id = worker.id;
+          this.getDutyByWorkerId();
         }
       });
+      }
+   getDutyByWorkerId() {
+    this.dutyService.getReadyByWorkerId(this.worker.id).subscribe((duty) => {
+      this.duty.startDate = duty.startDate;
+      this.duty.overDate = duty.overDate;
+    });
   }
 
   open(content) {

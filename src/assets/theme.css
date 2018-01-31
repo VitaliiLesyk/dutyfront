@@ -464,7 +464,8 @@ body, html {
 .btn.btn-info {
   color: #fff;
   background-color: #76d4f5;
-  border-color: #76d4f5
+  border-color: #76d4f5;
+  margin-right: 7px;
 }
 
 .btn.btn-info:hover {
@@ -4000,4 +4001,10 @@ pre {
 
 a {
   cursor: pointer
+}
+.current-btn{
+  margin-right: 10px;
+  float: left;
+  padding-top: 6px;
+  font-weight: bolder;
 }
