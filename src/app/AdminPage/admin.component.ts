@@ -18,8 +18,6 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     }
   `]
 })
-
-
 export class AdminComponent {
   closeResult: string;
 
@@ -27,5 +25,9 @@ export class AdminComponent {
 
   open(content) {
     this.modalService.open(content, { windowClass: 'dark-modal' });
+  }
+
+  public logout() {
+    localStorage.removeItem('x-access-token');
   }
 }
