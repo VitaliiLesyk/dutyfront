@@ -13,6 +13,7 @@ private getWorkersUrl: string = APP_URL + '/worker/getReady';
 private getOneWorkersUrl: string = APP_URL + '/worker/get/';
 private deleteWorkersUrl: string = APP_URL + '/worker/delete';
 private updateWorkersUrl: string = APP_URL + '/worker/update/';
+private getByCurrentDutyUrl: string = APP_URL + '/worker/getByCurrentDuty';
 
   constructor (private http: HttpClientWrapper)  {}
 
@@ -31,6 +32,10 @@ private updateWorkersUrl: string = APP_URL + '/worker/update/';
     }
     updateWorker(worker: Worker ): Observable<Worker> {
     return this.http.put<Worker>( this.updateWorkersUrl , worker);
+   }
+
+  getByCurrentDuty(): Observable<Worker> {
+    return this.http.get<Worker>(this.getByCurrentDutyUrl);
    }
 }
 

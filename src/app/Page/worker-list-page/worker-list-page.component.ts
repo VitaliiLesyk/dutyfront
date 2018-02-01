@@ -3,7 +3,7 @@ import {WorkerService} from '../../service/worker.service';
 import {Worker} from '../../models/worker.model';
 import {DutyService} from '../../service/duty.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Duty} from "../../models/duty.model";
+import {Duty} from '../../models/duty.model';
 
 @Component({
   selector: 'app-worker-list-page',

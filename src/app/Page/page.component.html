@@ -9,20 +9,19 @@
           <li>
             <ng-template #content let-c="close" let-d="dismiss">
               <div class="modal-header">
-                <h4 class="modal-title">Modal title</h4>
-                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                <h4 class="modal-title">Today duty </h4>
               </div>
               <div class="modal-body">
-                <p>One fine body&hellip;</p>
+                <p> Name : {{worker.name}}</p>
+                <p>DateStart : {{duty.startDate}}</p>
+                <p>DateOver : {{duty.overDate}}</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-outline-light" (click)="c('Close click')">Close</button>
               </div>
             </ng-template>
-
-            <button class="btn btn-info " (click)="open(content)">Curent</button>
+           <p class="current-btn">Today duty</p>
+            <button class="btn btn-info" (click)="open(content)"> {{worker.email}}</button>
           </li>
           <li class="profile dropdown">
            <button type="button" class="btn btn-danger" (click)="logout()" routerLink="/login">Logout</button>
@@ -49,10 +48,10 @@
         <nav class="menu">
           <ul class="nav metismenu">
             <li routerLinkActive="active">
-              <a routerLink="/admin/workers-list/"> <i class="fa fa-building-o"></i>Workers</a>
+              <a routerLink="/admin/workers-list/">Workers</a>
             </li>
             <li  routerLinkActive="active">
-              <a  routerLink="/admin/tasks-list/"> <i class="fa fa-flash"></i>Tasks</a>
+              <a  routerLink="/admin/tasks-list/">Tasks</a>
             </li>
 
           </ul>
