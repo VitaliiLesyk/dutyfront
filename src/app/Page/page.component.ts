@@ -10,7 +10,7 @@ import {DutyService} from '../service/duty.service';
 @Component({
   // moduleId: module.id.toString(),
   selector: 'app-system',
-  templateUrl: './admin.component.html',
+  templateUrl: './page.component.html',
   encapsulation: ViewEncapsulation.None,
   styles: [`
     .dark-modal .modal-content {
@@ -26,7 +26,7 @@ import {DutyService} from '../service/duty.service';
 })
 
 
-export class AdminComponent implements OnInit {
+export class PageComponent implements OnInit {
   private workerService: WorkerService;
   private dutyService: DutyService;
   private worker: Worker;

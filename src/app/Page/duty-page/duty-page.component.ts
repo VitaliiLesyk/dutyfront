@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Duty} from "../../models/duty.model";
-import {DutyService} from "../../service/duty.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Duty} from '../../models/duty.model';
+import {DutyService} from '../../service/duty.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-duty-page',
@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./duty-page.component.css']
 })
 export class DutyPageComponent implements OnInit {
-  public duty :Duty;
+  public duty : Duty;
   constructor(
     private dutyService: DutyService,
     private router: Router,

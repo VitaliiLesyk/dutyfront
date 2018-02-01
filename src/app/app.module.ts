@@ -8,14 +8,14 @@ import { HttpModule } from '@angular/http';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { WorkerService } from './service/worker.service';
-import { AdminModule } from './AdminPage/admin.module';
+import { PageModule } from './Page/page.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskService } from './service/task.service';
 import { DutyService } from './service/duty.service';
 import { FormsModule } from '@angular/forms';
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {AuthService} from "./service/auth.service";
-import {HttpClientWrapper} from "./auth/wrapper/HttpClientWrapper";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from './service/auth.service';
+import {HttpClientWrapper} from './auth/wrapper/HttpClientWrapper';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import {HttpClientWrapper} from "./auth/wrapper/HttpClientWrapper";
     HttpModule,
     AuthModule,
     AppRoutingModule,
-    AdminModule,
+    PageModule,
     HttpClientModule,
     NgbModule.forRoot(),
     FormsModule,
