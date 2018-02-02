@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 
 
 import {SharedModule} from '../shared/shared.module';
-import {AdminRoutingModule} from './page-routing.module';
+import {PageRoutingModule} from './page-routing.module';
 import {WorkerListPageComponent} from './worker-list-page/worker-list-page.component';
 import {TasksListPageComponent} from './tasks-list-page/tasks-list-page.component';
 import {AddWorkerPageComponent} from './add-worker-page/add-worker-page.component';
@@ -23,7 +23,7 @@ import {DutyPageComponent } from './duty-page/duty-page.component';
   imports : [
     CommonModule,
     SharedModule,
-    AdminRoutingModule,
+    PageRoutingModule,
     FormsModule
   ],
   declarations: [

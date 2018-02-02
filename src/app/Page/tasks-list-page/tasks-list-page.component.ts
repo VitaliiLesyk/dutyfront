@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Task} from '../../models/task.model';
 import {TaskService} from '../../service/task.service';
+import {AdminChecker} from "../../guards/AdminChecker";
 
 @Component({
   selector: 'app-tasks-list-page',
@@ -27,5 +28,9 @@ export class TasksListPageComponent implements OnInit {
           this.getTaskList();
         }
       );
+  }
+  public checkTokenForAdminRole():boolean{
+    let token:string = localStorage.getItem('x-access-token');
+    return AdminChecker.isAdmin(token);
   }
 }

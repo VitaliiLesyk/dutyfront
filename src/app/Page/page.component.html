@@ -9,10 +9,10 @@
           <li>
             <ng-template #content let-c="close" let-d="dismiss">
               <div class="modal-header">
-                <h4 class="modal-title">Today duty </h4>
+                <h4 class="modal-title">Today person on duty is </h4>
               </div>
               <div class="modal-body">
-                <p> Name : {{worker.name}}</p>
+                <p>Name : {{worker.name}}</p>
                 <p>DateStart : {{duty.startDate}}</p>
                 <p>DateOver : {{duty.overDate}}</p>
               </div>
@@ -20,7 +20,7 @@
                 <button type="button" class="btn btn-outline-light" (click)="c('Close click')">Close</button>
               </div>
             </ng-template>
-           <p class="current-btn">Today duty</p>
+           <p class="current-btn">Today person on duty is </p>
             <button class="btn btn-info" (click)="open(content)"> {{worker.email}}</button>
           </li>
           <li class="profile dropdown">
@@ -48,10 +48,10 @@
         <nav class="menu">
           <ul class="nav metismenu">
             <li routerLinkActive="active">
-              <a routerLink="/admin/workers-list/">Workers</a>
+              <a routerLink="/page/workers-list/">Workers</a>
             </li>
             <li  routerLinkActive="active">
-              <a  routerLink="/admin/tasks-list/">Tasks</a>
+              <a  routerLink="/page/tasks-list/">Tasks</a>
             </li>
 
           </ul>
