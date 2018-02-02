@@ -5,6 +5,7 @@ import {WorkerService} from '../service/worker.service';
 import {Worker} from '../models/worker.model';
 import {Duty} from '../models/duty.model';
 import {DutyService} from '../service/duty.service';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -32,12 +33,9 @@ export class PageComponent implements OnInit {
   private worker: Worker;
   private duty: Duty;
 
-  constructor(private modalService: NgbModal, workerService: WorkerService, dutyService: DutyService) {
+  constructor(private modalService: NgbModal, workerService: WorkerService, dutyService: DutyService, private router: Router) {
     this.workerService = workerService;
     this.dutyService = dutyService;
-    this.duty = new Duty();
-    this.worker = new Worker();
-    this.worker.email = 'NaN';
   }
 
   ngOnInit() {
@@ -46,20 +44,23 @@ export class PageComponent implements OnInit {
   }
 
   getByCurrentDuty() {
-      this.workerService.getByCurrentDuty().subscribe((worker) => {
-        if (worker.hasOwnProperty('email')) {
-          this.worker.email = worker.email;
-          this.worker.name = worker.name;
-          this.worker.id = worker.id;
-          this.getDutyByWorkerId();
-        }
-      });
+    this.workerService.getByCurrentDuty().subscribe((worker) => {
+      if (worker.hasOwnProperty('email')) {
+        this.worker = worker;
+        this.getDutyByWorkerId();
       }
-   getDutyByWorkerId() {
-    this.dutyService.getReadyByWorkerId(this.worker.id).subscribe((duty) => {
-      this.duty.startDate = duty.startDate;
-      this.duty.overDate = duty.overDate;
     });
+  }
+
+  getDutyByWorkerId() {
+    this.dutyService.getReadyByWorkerId(this.worker.id).subscribe((duty) => {
+      this.duty = duty;
+    });
+  }
+
+  logout(){
+    localStorage.removeItem('x-access-token');
+    this.router.navigate(['/login']);
   }
 
   open(content) {

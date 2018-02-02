@@ -1,0 +1,36 @@
+<section class="section">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bordered">
+          <div class="header-block">
+            <h3 class="title">List of fired workers</h3>
+          </div>
+        </div>
+        <div class="card-block">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>№</th>
+              <th>Name</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr *ngFor="let worker of workers">
+              <th scope="row">{{workers.lastIndexOf(worker)+1}}</th>
+              <td>
+                <a routerLink="/page/worker/{{worker.id}}">{{worker.name}}</a>
+              </td>
+              <td class="text-lg-center  pull-right m-r-2">
+                <button type="button" class="btn btn-secondary" routerLink="/page/duty/{{worker.id}}">
+                  <strong>&#10710;</strong>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

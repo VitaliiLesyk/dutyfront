@@ -8,34 +8,39 @@ const APP_URL = 'http://localhost:8456';
 
 @Injectable()
 export class WorkerService {
-private addWorkerUrl: string = APP_URL + '/worker/add';
-private getWorkersUrl: string = APP_URL + '/worker/getReady';
-private getOneWorkersUrl: string = APP_URL + '/worker/get/';
-private deleteWorkersUrl: string = APP_URL + '/worker/delete';
-private updateWorkersUrl: string = APP_URL + '/worker/update/';
-private getByCurrentDutyUrl: string = APP_URL + '/worker/getByCurrentDuty';
+  private addWorkerUrl: string = APP_URL + '/worker/add';
+  private getWorkersUrl: string = APP_URL + '/worker/getReady';
+  private getOneWorkersUrl: string = APP_URL + '/worker/get/';
+  private deleteWorkersUrl: string = APP_URL + '/worker/delete';
+  private updateWorkersUrl: string = APP_URL + '/worker/update/';
+  private getByCurrentDutyUrl: string = APP_URL + '/worker/getByCurrentDuty';
+  private getAllWithStatusFiredUrl: string = APP_URL + '/worker/getFired';
 
   constructor (private http: HttpClientWrapper)  {}
 
-    addWorker(worker: Worker): Observable<Worker | Error> {
+  addWorker(worker: Worker): Observable<Worker | Error> {
     return this.http.post<Worker | Error>(this.addWorkerUrl, worker);
-    }
+  }
 
-    getAllOrderedByDutyWithStatusReady(): Observable<Worker[]> {
+  getAllOrderedByDutyWithStatusReady(): Observable<Worker[]> {
       return this.http.get<Worker[]>(this.getWorkersUrl);
-    }
-    getOneWorker(id: number): Observable<Worker> {
+  }
+  getOneWorker(id: number): Observable<Worker> {
     return this.http.get<IWorker>(this.getOneWorkersUrl + String(id));
-   }
-    deleteWorkers( id: number): Observable<Worker> {
+  }
+  deleteWorkers( id: number): Observable<Worker> {
       return this.http.delete<Worker>(this.deleteWorkersUrl + "/" + id);
-    }
-    updateWorker(worker: Worker ): Observable<Worker> {
+  }
+  updateWorker(worker: Worker ): Observable<Worker> {
     return this.http.put<Worker>( this.updateWorkersUrl , worker);
-   }
+  }
 
   getByCurrentDuty(): Observable<Worker> {
     return this.http.get<Worker>(this.getByCurrentDutyUrl);
-   }
+  }
+
+  getAllWithStatusFired(): Observable<Worker[]> {
+    return this.http.get<Worker[]>(this.getAllWithStatusFiredUrl);
+  }
 }
 

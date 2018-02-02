@@ -11,7 +11,7 @@
               <div class="modal-header">
                 <h4 class="modal-title">Today person on duty is </h4>
               </div>
-              <div class="modal-body">
+              <div class="modal-body" *ngIf="duty && worker">
                 <p>Name : {{worker.name}}</p>
                 <p>DateStart : {{duty.startDate}}</p>
                 <p>DateOver : {{duty.overDate}}</p>
@@ -21,10 +21,11 @@
               </div>
             </ng-template>
            <p class="current-btn">Today person on duty is </p>
-            <button class="btn btn-info" (click)="open(content)"> {{worker.email}}</button>
+            <button class="btn btn-info" (click)="open(content)" *ngIf="worker">{{worker.email}}</button>
+            <p class="btn btn-info" *ngIf="!worker">NaN</p>
           </li>
           <li class="profile dropdown">
-           <button type="button" class="btn btn-danger" (click)="logout()" routerLink="/login">Logout</button>
+           <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
           </li>
         </ul>
       </div>

@@ -16,6 +16,7 @@ import {UpdateTaskPageComponent} from './update-task-page/update-task-page.compo
 import {FormsModule} from '@angular/forms';
 import {WorkerPageComponent} from './worker-page/worker-page.component';
 import {DutyPageComponent } from './duty-page/duty-page.component';
+import {FiredWorkersListPageComponent} from "./fired-workers-list-page/fired-workers-list-page.component";
 
 
 
@@ -36,6 +37,7 @@ import {DutyPageComponent } from './duty-page/duty-page.component';
     PageComponent,
     WorkerPageComponent,
     DutyPageComponent,
+    FiredWorkersListPageComponent
   ],
 })
 

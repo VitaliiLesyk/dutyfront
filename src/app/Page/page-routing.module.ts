@@ -12,6 +12,7 @@ import {WorkerPageComponent} from './worker-page/worker-page.component';
 import {DutyPageComponent} from './duty-page/duty-page.component';
 import {AdminCanActivateImpl} from "../guards/AdminCanActivateImpl";
 import {UserCanActivateImpl} from "../guards/UserCanActivateImpl";
+import {FiredWorkersListPageComponent} from "./fired-workers-list-page/fired-workers-list-page.component";
 
 
 
@@ -24,7 +25,8 @@ const routes: Routes = [
       {path: 'update-worker/:id', canActivate: [AdminCanActivateImpl], component: UpdateWorkerPageComponent },
       {path: 'update-task/:id', canActivate: [AdminCanActivateImpl], component: UpdateTaskPageComponent},
       {path: 'worker/:id', canActivate: [AdminCanActivateImpl], component: WorkerPageComponent},
-      {path: 'duty/:id', canActivate: [UserCanActivateImpl], component: DutyPageComponent}
+      {path: 'duty/:id', canActivate: [UserCanActivateImpl], component: DutyPageComponent},
+      {path: 'fired-workers-list', canActivate: [AdminCanActivateImpl], component: FiredWorkersListPageComponent}
     ]}
 ];
 

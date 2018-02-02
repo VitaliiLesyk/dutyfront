@@ -13,8 +13,13 @@ export class AdminCanActivateImpl implements CanActivate {
     if (token && tokenNotExpired(null, token) && AdminChecker.isAdmin(token)) {
       return true;
     } else {
-      this.router.navigate(['./login']);
-      return false;
+      if (token && tokenNotExpired(null, token) && !AdminChecker.isAdmin(token)){
+        this.router.navigate(['/page/workers-list']);
+        return false;
+      } else {
+        this.router.navigate(['./login']);
+        return false;
+      }
     }
   }
 

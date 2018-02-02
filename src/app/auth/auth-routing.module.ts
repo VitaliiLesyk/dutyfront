@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth.component';
+import {RedirectFromLogin} from "../guards/RedirectFromLogin";
 
 const routes: Routes = [
-  {path: '', component: AuthComponent, children : [
+  {path: '', canActivate: [RedirectFromLogin], component: AuthComponent, children : [
     {path: 'login', component : LoginComponent}
   ]}
 ];

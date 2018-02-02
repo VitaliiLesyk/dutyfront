@@ -28,8 +28,6 @@ export class WorkerPageComponent implements OnInit {
     this.workerService.getOneWorker(id)
       .subscribe(worker => {
         this.worker = (worker as (Worker));
-        console.log(this.worker);
-      }, error => console.log(error), () => {
       });
   }
 

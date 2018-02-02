@@ -18,6 +18,7 @@ import {AuthService} from './service/auth.service';
 import {HttpClientWrapper} from './auth/wrapper/HttpClientWrapper';
 import {AdminCanActivateImpl} from "./guards/AdminCanActivateImpl";
 import {UserCanActivateImpl} from "./guards/UserCanActivateImpl";
+import {RedirectFromLogin} from "./guards/RedirectFromLogin";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import {UserCanActivateImpl} from "./guards/UserCanActivateImpl";
     NgbModule.forRoot(),
     FormsModule,
   ],
-  providers: [WorkerService, TaskService, DutyService, AuthService, HttpClientWrapper, AdminCanActivateImpl, UserCanActivateImpl],
+  providers: [WorkerService, TaskService, DutyService, AuthService, HttpClientWrapper, AdminCanActivateImpl, UserCanActivateImpl, RedirectFromLogin],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
