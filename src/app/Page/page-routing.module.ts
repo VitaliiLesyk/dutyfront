@@ -10,19 +10,23 @@ import {UpdateWorkerPageComponent} from './update-worker-page/update-worker-page
 import {UpdateTaskPageComponent} from './update-task-page/update-task-page.component';
 import {WorkerPageComponent} from './worker-page/worker-page.component';
 import {DutyPageComponent} from './duty-page/duty-page.component';
+import {AdminCanActivateImpl} from "../guards/AdminCanActivateImpl";
+import {UserCanActivateImpl} from "../guards/UserCanActivateImpl";
+import {FiredWorkersListPageComponent} from "./fired-workers-list-page/fired-workers-list-page.component";
 
 
 
 const routes: Routes = [
-  {path: 'admin', component: PageComponent, children: [
-      {path: 'add-task', component: AddTaskPageComponent},
-      {path: 'add-worker', component: AddWorkerPageComponent},
-      {path: 'tasks-list', component: TasksListPageComponent},
-      {path: 'workers-list', component: WorkerListPageComponent},
-      {path: 'update-worker/:id', component: UpdateWorkerPageComponent },
-      {path: 'update-task/:id', component: UpdateTaskPageComponent},
-      {path: 'worker/:id', component: WorkerPageComponent},
-      {path: 'duty/:id', component: DutyPageComponent}
+  {path: 'page', component: PageComponent, children: [
+      {path: 'add-task' , canActivate: [AdminCanActivateImpl], component: AddTaskPageComponent},
+      {path: 'add-worker', canActivate: [AdminCanActivateImpl], component: AddWorkerPageComponent},
+      {path: 'tasks-list', canActivate: [UserCanActivateImpl], component: TasksListPageComponent},
+      {path: 'workers-list', canActivate: [UserCanActivateImpl], component: WorkerListPageComponent},
+      {path: 'update-worker/:id', canActivate: [AdminCanActivateImpl], component: UpdateWorkerPageComponent },
+      {path: 'update-task/:id', canActivate: [AdminCanActivateImpl], component: UpdateTaskPageComponent},
+      {path: 'worker/:id', canActivate: [AdminCanActivateImpl], component: WorkerPageComponent},
+      {path: 'duty/:id', canActivate: [UserCanActivateImpl], component: DutyPageComponent},
+      {path: 'fired-workers-list', canActivate: [AdminCanActivateImpl], component: FiredWorkersListPageComponent}
     ]}
 ];
 
@@ -31,4 +35,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AdminRoutingModule {}
+export class PageRoutingModule {}

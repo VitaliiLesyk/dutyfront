@@ -4,6 +4,7 @@ import {Worker} from '../../models/worker.model';
 import {DutyService} from '../../service/duty.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Duty} from '../../models/duty.model';
+import {AdminChecker} from "../../guards/AdminChecker";
 
 @Component({
   selector: 'app-worker-list-page',
@@ -14,29 +15,24 @@ export class WorkerListPageComponent implements OnInit {
   id1: number;
   id2: number;
   workers: Worker[];
-  public duty: Duty;
   id: number;
 
   constructor(private workerService: WorkerService,
-              private dutyService: DutyService,
-              private router: Router,
-              private route: ActivatedRoute,) {
-    this.duty = new Duty();
+              private dutyService: DutyService) {
   }
 
   ngOnInit() {
     this.getWorkerList();
+  }
 
+  public checkTokenForAdminRole():boolean{
+    let token:string = localStorage.getItem('x-access-token');
+    return AdminChecker.isAdmin(token);
   }
 
   getWorkerList() {
     return this.workerService.getAllOrderedByDutyWithStatusReady()
       .subscribe(workers => this.workers = (workers as (Worker[])), error => console.log(error));
-  }
-
-  getReadyByWorkerId(workerId: number) {
-    return this.dutyService.getReadyByWorkerId(workerId)
-      .subscribe(result => console.log(result));
   }
 
   deleteWorker(id: number): void {

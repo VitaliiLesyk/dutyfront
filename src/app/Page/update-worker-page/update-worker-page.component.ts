@@ -35,8 +35,6 @@ export class UpdateWorkerPageComponent implements OnInit {
     this.workerService.getOneWorker(id)
       .subscribe(worker => {
         this.worker = (worker as (Worker));
-        console.log(this.worker);
-      }, error => console.log(error), () => {
       });
     }
 
@@ -46,9 +44,8 @@ export class UpdateWorkerPageComponent implements OnInit {
           if (worker.hasOwnProperty('id')) {
             this.message = new Message('Success', 'success');
             this.message.show();
-          }else {
-            this.message = new Message(worker.message, 'danger');
-          }
-        });
+          }}, error => {
+        this.message = new Message('Error from server', 'danger');
+      });
   }
 }

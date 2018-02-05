@@ -35,9 +35,8 @@ export class AddWorkerPageComponent implements OnInit {
            if (worker.hasOwnProperty('id')) {
              this.message = new Message('Success', 'success');
              this.message.show();
-           }else {
-             this.message = new Message(worker.message, 'danger');
-           }
-          });
+           }}, error => {
+           this.message = new Message('Error from server', 'danger');
+         });
   }
 }

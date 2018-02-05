@@ -1,14 +1,30 @@
+<p class = "p_before_table">Current</p>
 <table class="table table-striped" >
   <thead>
-  <tr>
-    <th>Date Start</th>
-    <th>Date Over</th>
-  </tr>
+    <tr>
+      <th class="th_in_table">Date Start</th>
+      <th class="th_in_table">Date Over</th>
+    </tr>
   </thead>
-  <tbody *ngIf="duty">
-  <tr>
-    <td >{{duty.startDate}}</td>
-  <td>{{duty.overDate}}</td>
-  </tr>
+  <tbody *ngIf="currentDuty">
+    <tr>
+      <td >{{currentDuty.startDate}}</td>
+      <td>{{currentDuty.overDate}}</td>
+    </tr>
+  </tbody>
+</table>
+<p class="p_before_table" *ngIf="checkTokenForAdminRole()">Passed</p>
+<table class="table table-striped" *ngIf="checkTokenForAdminRole()">
+  <thead>
+    <tr>
+      <th class="th_in_table">Date Start</th>
+      <th class="th_in_table">Date Over</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let passedDuty of passedDuties">
+    <tr>
+      <td >{{passedDuty.startDate}}</td>
+      <td>{{passedDuty.overDate}}</td>
+    </tr>
   </tbody>
 </table>

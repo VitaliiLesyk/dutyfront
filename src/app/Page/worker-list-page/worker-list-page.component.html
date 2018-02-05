@@ -6,14 +6,18 @@
           <div class="header-block">
             <h3 class="title">List of workers</h3>
           </div>
-          <div class="form-inline pull-right m-r-2">
+        </div>
+        <div class="form-inline pull-right m-r-2" *ngIf="checkTokenForAdminRole()">
             <div class="btn-group">
-              <button type="button" class="btn btn-secondary"
-                      routerLink="/admin/add-worker">
+              <button type="button" class="btn btn-secondary" routerLink="/page/fired-workers-list">
+                <strong>Fired</strong>
+              </button>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary" routerLink="/page/add-worker">
                 <strong>+</strong>
               </button>
             </div>
-          </div>
         </div>
         <div class="card-block">
           <table class="table table-striped">
@@ -21,30 +25,27 @@
             <tr>
               <th>№</th>
               <th>Name</th>
-
             </tr>
             </thead>
             <tbody >
-            <tr *ngFor="let worker of workers"
-            >
-              <th scope="row">{{workers.lastIndexOf(worker)+1}}</th>
-              <td><a routerLink="/admin/worker/{{worker.id}}">{{worker.name}}</a></td>
-
-              <td class="text-lg-center  pull-right m-r-2" *ngIf="">
-                <button type="button" class="btn btn-secondary" (click)= "deleteWorker(worker.id)">
-                  <strong>&#9988;</strong>
-                </button>
-                <button type="button" class="btn btn-secondary"
-                        (click)="setId(worker.id)">
-                  <strong>&#8693;</strong>
-                </button>
-                <button type="button" class="btn btn-secondary"
-                        routerLink="/admin/duty/{{worker.id}}"
-                >
-                  <strong>&#10710;</strong>
-                </button>
-              </td>
-            </tr>
+              <tr *ngFor="let worker of workers">
+                <th scope="row">{{workers.lastIndexOf(worker)+1}}</th>
+                <td>
+                  <a *ngIf="checkTokenForAdminRole()" routerLink="/page/worker/{{worker.id}}">{{worker.name}}</a>
+                  <p *ngIf="!checkTokenForAdminRole()">{{worker.name}}</p>
+                </td>
+                <td class="text-lg-center  pull-right m-r-2">
+                  <button type="button" class="btn btn-secondary" (click)= "deleteWorker(worker.id)" *ngIf="checkTokenForAdminRole()">
+                    <strong>&#9988;</strong>
+                  </button>
+                  <button type="button" class="btn btn-secondary" (click)="setId(worker.id)" *ngIf="checkTokenForAdminRole()">
+                    <strong>&#8693;</strong>
+                  </button>
+                  <button type="button" class="btn btn-secondary" routerLink="/page/duty/{{worker.id}}">
+                    <strong>&#10710;</strong>
+                  </button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

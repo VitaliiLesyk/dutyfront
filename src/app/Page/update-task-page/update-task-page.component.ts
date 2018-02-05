@@ -35,8 +35,7 @@ export class UpdateTaskPageComponent implements OnInit {
     this.taskService.getOneTask(id)
       .subscribe(task => {
         this.task = (task as (Task));
-        }, error => console.log(error), () => {
-      });
+        });
   }
   updateTask(): void {
     this.taskService.updateTask(this.task)
@@ -44,9 +43,8 @@ export class UpdateTaskPageComponent implements OnInit {
         if (task.hasOwnProperty('id')) {
           this.message = new Message('Success', 'success');
           this.message.show();
-        }else {
-          this.message = new Message(task.message, 'danger');
-        }
+        }}, error => {
+        this.message = new Message('Error from server', 'danger');
       });
   }
 }

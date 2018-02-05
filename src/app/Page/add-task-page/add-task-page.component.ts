@@ -33,9 +33,8 @@ export class AddTaskPageComponent implements OnInit {
         if (task.hasOwnProperty('id')) {
           this.message = new Message('Success', 'success');
           this.message.show();
-        } else {
-          this.message = new Message(task.message, 'danger');
-        }
-      });
+        }}, error => {
+        this.message = new Message('Error from server', 'danger');
+        });
   }
 }

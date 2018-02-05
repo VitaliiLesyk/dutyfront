@@ -1,0 +1,8 @@
+.p_before_table{
+  font-size: 20px;
+  float: left;
+  font-weight: bolder;
+}
+.th_in_table{
+  color: lightslategrey;
+}
